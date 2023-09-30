@@ -27,7 +27,9 @@ public:
         double newY = y * otherVec.z - y * otherVec.x;
         double newZ = z * otherVec.x - z * otherVec.y;
 
-        return Vector3d newVec(newX, newY, newZ); 
+        Vector3d newVec(newX, newY, newZ);
+
+        return newVec;
     } 
 };
 #endif //UNTITLED_VECTOR3D_H
