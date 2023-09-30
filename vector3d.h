@@ -22,5 +22,10 @@ public:
     double dot(Vector3d otherVec){
         return x*otherVec.x + y*otherVec.y + z*otherVec.z;
     }
+    double cross(Vector3d otherVec){
+        double add = x * otherVec.y + y * otherVec.z + z * otherVec.x;
+        double subtract = x * otherVec.z + y * otherVec.x + z * otherVec.x;
+        return add - subtract;
+    } 
 };
 #endif //UNTITLED_VECTOR3D_H
