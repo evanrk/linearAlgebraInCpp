@@ -5,7 +5,8 @@
 #ifndef UNTITLED_VECTOR3D_H
 #define UNTITLED_VECTOR3D_H
 
-# include <cmath>
+#include <cmath>
+#include <string>
 
 class Vector3d {
 public:
@@ -13,7 +14,7 @@ public:
     double y;
     double z;
     double mag;
-    Vector3d(int xNew, int yNew, int zNew){
+    Vector3d(double xNew, double yNew, double zNew){
         x = xNew;
         y = yNew;
         z = zNew;
@@ -23,13 +24,17 @@ public:
         return x*otherVec.x + y*otherVec.y + z*otherVec.z;
     }
     Vector3d cross(Vector3d otherVec){
-        double newX = x * otherVec.y - x * otherVec.z;
-        double newY = y * otherVec.z - y * otherVec.x;
-        double newZ = z * otherVec.x - z * otherVec.y;
+        double newX = y * otherVec.z - z * otherVec.y;
+        double newY = z * otherVec.x - x * otherVec.z;
+        double newZ = x * otherVec.y - y * otherVec.x;
 
         Vector3d newVec(newX, newY, newZ);
 
         return newVec;
     } 
+
+    std::string to_string(){
+        return std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z);
+    }
 };
 #endif //UNTITLED_VECTOR3D_H
