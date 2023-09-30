@@ -20,6 +20,12 @@ public:
         z = zNew;
         mag = sqrt(x*x + y*y + z*z);
     }
+
+    Vector3d multiply(double scalar){
+        Vector3d scaledVec(scalar*x, scalar*y, scalar*z);
+        return scaledVec;
+    }
+
     double dot(Vector3d otherVec){
         return x*otherVec.x + y*otherVec.y + z*otherVec.z;
     }
@@ -29,9 +35,16 @@ public:
         double newZ = x * otherVec.y - y * otherVec.x;
 
         Vector3d newVec(newX, newY, newZ);
-
         return newVec;
-    } 
+    }
+
+    Vector3d projection(Vector3d otherVec){
+        double numerator = dot(otherVec);
+        double denominator = mag * mag;
+        double scalar = numerator / denominator;
+
+        return multiply(scalar);
+    }
 
     std::string to_string(){
         return std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z);
